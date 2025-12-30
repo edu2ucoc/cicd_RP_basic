@@ -56,5 +56,49 @@ git add .
 git commit -m "feat: 더하기, 곱하기 함수 및 테스트 코드 추가"
 
 # 3. 원격 저장소(GitHub)로 푸시
-git push origin feature/add-mult
+git push origin feature/add-mul
 ```
+## Pull Request 생성 (GitHub Web)
+- GitHub 접속
+- GitHub 저장소 메인 페이지로 이동
+- 노란색 박스로 "Compare & pull request" 버튼 확인
+    - 클릭
+    - 내용 작성
+        내용 작성:
+            - Title: [Feat] 더하기, 곱셈 기능 추가
+            - Description: 기본 연산 기능을 추가 및 테스트 코드를 작성. 
+    - Create pull request 클릭.
+    - reviewer 지정 가능
+    - 화면 전환
+        - xxx wants to merge 1 commit into main from feature/add-mul
+- 진행화면
+    - No conflicts with base branch
+        - ![alt text](image.png)
+        - Merging can be performed automatically.
+        - [녹색]테스트가 모두 통과했습니다. 이제 `Merge pull request` 버튼이 활성화(초록색)
+        - 클릭
+            ```
+                - Commit message
+                    - 자동세팅됨(수정가능)
+                - Extended description
+                    - 자동세팅됨(수정가능)
+            ```
+        - confirm merge 클릭
+            ![alt text](image-1.png)
+    - main 브런치에 반영
+- 로컬 정리 (Cleanup)
+    ```
+        # 1. main 브런치로로 이동
+        git checkout main
+
+        # 2. GitHub에서 합쳐진 최신 코드 받아오기
+        git pull origin main
+        # (이제 app.py를 열어보면 곱셈 코드가 들어와 있습니다!)
+
+        # 3. 다 쓴 브랜치 삭제 (계속 반복), 
+        #    내역을 두고 싶다면 유지 (로컬만 삭제)
+        - 로컬 삭제
+        git branch -d feature/add-mul
+        - 원격 삭제
+        git push origin --delete feature/add-mul
+    ```
